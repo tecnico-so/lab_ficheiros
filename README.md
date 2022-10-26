@@ -6,7 +6,7 @@
 
 No final deste guião, deverá ser capaz de:
 
-- ler e escrever para ficheiros
+- interagir com ficheiros utilizando as interfaces POSIX (fopen, fwrite, fread, fclose, entre outras)
 - compreender o funcionamento prático de file descriptors
 
 Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios práticos que permitem aos alunos familiarizarem-se com um determinado tema que será necessário para resolver os projetos da disciplina. Os tutoriais podem ser resolvidos individualmente ou em grupo. A sua resolução é recomendada mas não obrigatória. Não são avaliados. Cada tutorial pressupõe que os exercícios são realizados numa interface de linha de comandos (shell) de um sistema Unix/Linux ou equivalente. Assume também que os alunos já resolveram os tutoriais anteriores.
@@ -17,19 +17,24 @@ Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios prátic
 
 ## Acesso a ficheiros
 
-1. Modifique cada programa acima para passarem a aceder ao ficheiro usando as funções da biblioteca *stdio* (ou seja, fopen, fwrite, fread, fclose, entre outras).
+1. Observe o código fonte no ficheiro open-write.c. Compile, execute e verifique que o ficheiro test.txt tem a mensagem esperada.
 
-2. Experimente correr os novos programas e confirme que têm um comportamento equivalente aos exemplos originais.
+2. Observe o código fonte no ficheiro open-read.c. Compile, execute e verifique que o
+output impresso no ecrã é o esperado.
 
-3. Que vantagens encontra nas novas variantes dos programas?
+3. Modifique cada programa acima para passarem a aceder ao ficheiro usando as funções da biblioteca *stdio* (ou seja, fopen, fwrite, fread, fclose, entre outras).
 
-4. Caso o programa open-read.c seja executado sobre um ficheiro cujo conteúdo exceda 128 bytes, só um excerto do ficheiro é lido. Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o seu conteúdo é superior à dimensão do buffer.
+4. Experimente correr os novos programas e confirme que têm um comportamento equivalente aos exemplos originais.
 
-5. Teste a sua solução usando um ficheiro grande.
+5. Que vantagens encontra nas novas variantes dos programas?
 
-6. Estenda a solução anterior de modo que o resultado da leitura seja colocado no ficheiro *test-out.txt*.
+6. Caso o programa open-read.c seja executado sobre um ficheiro cujo conteúdo exceda 128 bytes, só um excerto do ficheiro é lido. Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o seu conteúdo é superior à dimensão do buffer.
 
-7. Experimente a nova solução e verifique o resultado está correto usando o comando dif entre ambos os ficheiros.
+7. Teste a sua solução usando um ficheiro grande.
+
+8. Estenda a solução anterior de modo que o resultado da leitura seja colocado no ficheiro *test-out.txt*.
+
+9. Experimente a nova solução e verifique o resultado está correto usando o comando diff entre ambos os ficheiros.
 
 ## Interface de Entradas/Saídas
 
@@ -47,5 +52,4 @@ Como já sabe, por convenção, os três primeiros file descriptors são reserva
 
 ## Conclusão
 
-Já concluindo os objectivos deste guião e sabendo como funcionam leituras e escritas:
-Tenta agora criar uma função que lê de um ficheiro e põe num buffer um número variável de caracteres (põe nesse buffer 10 caracteres de cada vez, independentemente do número de caracteres a ler) e no fim escreve o que estiver no buffer para um ficheiro
+Concluindo este guião já sabes como escrever e ler de um ficheiro.
