@@ -6,7 +6,7 @@
 
 No final deste guião, deverá ser capaz de:
 
-- ler e escrever para ficheiros
+- interagir com ficheiros utilizando as interfaces POSIX (fopen, fwrite, fread, fclose, entre outras)
 - compreender o funcionamento prático de file descriptors
 
 Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios práticos que permitem aos alunos familiarizarem-se com um determinado tema que será necessário para resolver os projetos da disciplina. Os tutoriais podem ser resolvidos individualmente ou em grupo. A sua resolução é recomendada mas não obrigatória. Não são avaliados. Cada tutorial pressupõe que os exercícios são realizados numa interface de linha de comandos (shell) de um sistema Unix/Linux ou equivalente. Assume também que os alunos já resolveram os tutoriais anteriores.
@@ -45,7 +45,14 @@ Como já sabe, por convenção, os três primeiros file descriptors são reserva
 
 4. Idem sobre o programa *open-read.c* baseado em stdio, usando a variável FILE *stdin como argumento da função de leitura (fread, fscanf, ou outra).
 
-## Conclusão
+## Desafio
 
 Já concluindo os objectivos deste guião e sabendo como funcionam leituras e escritas:
+
+
+
 Tenta agora criar uma função que lê de um ficheiro e põe num buffer um número variável de caracteres (põe nesse buffer 10 caracteres de cada vez, independentemente do número de caracteres a ler) e no fim escreve o que estiver no buffer para um ficheiro
+
+TODO: não percebi a 100% a formulação do desafio acima, portanto criei esta a baixo. No entanto não sei se é equivalente, opiniões?
+
+Crie uma função que lê um ficheiro de um tamanho arbitrario e copia o seu conteudo para outro ficheiro (criando-o se for necessário).
