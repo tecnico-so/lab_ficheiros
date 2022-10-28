@@ -22,13 +22,14 @@ Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios prátic
 2. Observe o código fonte no ficheiro [open-read.c](./open-read/open-write.c). Compile, execute e verifique que o
 output impresso no ecrã é o esperado.
 
-3. Modifique cada programa acima para passarem a aceder ao ficheiro usando as funções da biblioteca *stdio* (ou seja, fopen, fwrite, fread, fclose, entre outras).
+3. Modifique cada programa acima para passarem a aceder ao ficheiro usando as funções da biblioteca *stdio* (ou seja, `fopen`, `fwrite`, `fread`, `fclose`, entre outras).
+Mais documentação sobre a biblioteca *stdio* pode ser encontrada em: https://man7.org/linux/man-pages/man3/stdio.3.html.
 
 4. Experimente correr os novos programas e confirme que têm um comportamento equivalente aos exemplos originais.
 
 5. Que vantagens encontra nas novas variantes dos programas?
 
-6. Caso o programa open-read.c seja executado sobre um ficheiro cujo conteúdo exceda 128 bytes, só um excerto do ficheiro é lido. Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o seu conteúdo é superior à dimensão do buffer.
+6. Caso o programa [open-read.c](./open-read/open-read.c) seja executado sobre um ficheiro cujo conteúdo exceda 128 bytes, só um excerto do ficheiro é lido. Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o seu conteúdo é superior à dimensão do buffer.
 
 7. Teste a sua solução usando um ficheiro grande.
 
