@@ -3,11 +3,11 @@
 #
 CC = gcc
 CFLAGS = -g -Wall -std=c17
-OBJECTS = open-write
+TARGETS = open-write
 
+.PHONY: all clean
 
-all: $(OBJECTS)
+all: $(TARGETS)
 
 clean:
-	rm -f *.o $(OBJECTS)
-
+	rm -f *.o $(TARGETS)
