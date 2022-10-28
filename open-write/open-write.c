@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     */
    int fd = open("test.txt", O_CREAT | O_TRUNC | O_WRONLY , S_IRUSR | S_IWUSR);
    if (fd < 0){
-      printf("open error: %s\n", strerror(errno));
+      fprintf(stderr, "open error: %s\n", strerror(errno));
       return -1;
    }
 
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
    /* write a string to the file */
    int bytes_written = write(fd, buffer, strlen(buffer));
    if (bytes_written < 0){
-      printf("write error: %s\n", strerror(errno));
+      fprintf(stderr, "write error: %s\n", strerror(errno));
       return -1;
    }
 
