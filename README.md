@@ -6,7 +6,7 @@
 
 No final deste guião, deverá ser capaz de:
 
-- interagir com ficheiros utilizando as interfaces POSIX (fopen, fwrite, fread, fclose, entre outras)
+- interagir com ficheiros utilizando as interfaces POSIX (`fopen`, `fwrite`, `fread`, `fclose`, entre outras)
 - compreender o funcionamento prático de file descriptors
 
 Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios práticos que permitem aos alunos familiarizarem-se com um determinado tema que será necessário para resolver os projetos da disciplina. Os tutoriais podem ser resolvidos individualmente ou em grupo. A sua resolução é recomendada mas não obrigatória. Não são avaliados. Cada tutorial pressupõe que os exercícios são realizados numa interface de linha de comandos (shell) de um sistema Unix/Linux ou equivalente. Assume também que os alunos já resolveram os tutoriais anteriores.
@@ -17,9 +17,9 @@ Nota: Os tutoriais práticos de SO consistem num conjunto de exercícios prátic
 
 ## Acesso a ficheiros
 
-1. Observe o código fonte no ficheiro open-write.c. Compile, execute e verifique que o ficheiro test.txt tem a mensagem esperada.
+1. Observe o código fonte no ficheiro [open-write.c](./open-write/open-write.c). Compile, execute e verifique que o ficheiro test.txt tem a mensagem esperada.
 
-2. Observe o código fonte no ficheiro open-read.c. Compile, execute e verifique que o
+2. Observe o código fonte no ficheiro [open-read.c](./open-read/open-write.c). Compile, execute e verifique que o
 output impresso no ecrã é o esperado.
 
 3. Modifique cada programa acima para passarem a aceder ao ficheiro usando as funções da biblioteca *stdio* (ou seja, fopen, fwrite, fread, fclose, entre outras).
@@ -42,13 +42,13 @@ A interface de E/S Unix é baseada na existência de uma tabela de ficheiros abe
 
 Como já sabe, por convenção, os três primeiros file descriptors são reservados: 0 - stdin (standard input, vulgo teclado), 1 - stdout (standard out, vulgo display), 2 - stderr (standard error, vulgo display).
 
-1. Modifique o programa original *open-write.c* substituindo o primeiro argumento (*fd*) da instrução write por '1' e verifique o que muda no comportamento do programa.
+1. Modifique o programa original [open-write.c](./open-write/open-write.c) substituindo o primeiro argumento (`fd`) da instrução write por `1` e verifique o que muda no comportamento do programa.
 
-2. Também pode fazer esta alteração sobre o programa que compôs baseado na stdio. Nesse caso, deve passar a variável FILE *stdout (definida em stdio) para o argumento respetivo da função de escrita que usou (fwrite, fprintf, ou outra).
+2. Também pode fazer esta alteração sobre o programa que compôs baseado no `stdio`. Nesse caso, deve passar a variável `FILE * stdout` (definida em `stdio.h`) para o argumento respetivo da função de escrita que usou (`fwrite`, `fprintf`, ou `outra`).
 
-3. Modifique o programa original *open-read.c* substituindo o primeiro argumento (fd) da instrução read por '0' e verifique que a mensagem é lida do teclado.
+3. Modifique o programa original [open-read.c](./open-read/open-read.c) substituindo o primeiro argumento (`fd`) da instrução read por `0` e verifique que a mensagem é lida do teclado.
 
-4. Idem sobre o programa *open-read.c* baseado em stdio, usando a variável FILE *stdin como argumento da função de leitura (fread, fscanf, ou outra).
+4. Idem sobre o programa [open-read.c](./open-read/open-read.c) baseado no `stdio`, usando a variável `FILE * stdin` como argumento da função de leitura (`fread`, `fscanf`, ou outra).
 
 ## Conclusão
 
