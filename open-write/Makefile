@@ -2,7 +2,7 @@
 # We are using implicit rules here
 #
 CC = gcc
-CFLAGS = -g -Wall -std=c11
+CFLAGS = -g -Wall -std=c17
 OBJECTS = open-write
 
 
