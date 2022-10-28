@@ -51,6 +51,3 @@ Como já sabe, por convenção, os três primeiros file descriptors são reserva
 
 4. Idem sobre o programa [open-read.c](./open-read/open-read.c) baseado no `stdio`, usando a variável `FILE * stdin` como argumento da função de leitura (`fread`, `fscanf`, ou outra).
 
-## Conclusão
-
-Concluindo este guião já sabes como escrever e ler de um ficheiro.
