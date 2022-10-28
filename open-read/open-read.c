@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     */
    int fd = open("test.txt", O_RDONLY);
    if (fd < 0){
-      printf("open error: %s\n", strerror(errno));
+      fprintf(stderr, "open error: %s\n", strerror(errno));
       return -1;
    }
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
    /* read the contents of the file */
    int bytes_read = read(fd, buffer, sizeof(buffer));
    if (bytes_read < 0){
-      printf("read error: %s\n", strerror(errno));
+      fprintf(stderr, "read error: %s\n", strerror(errno));
       return -1;
    }
 
