@@ -20,11 +20,11 @@ int main(int argc, char *argv[])
     * the attributes are:
     * - O_CREAT: create the file if it does not exist
     * - O_TRUNC: erase the contents of the file
-    * - O_WRONLY: open the file for writting
+    * - O_WRONLY: open the file for writing
     *
     * the permissions are applied if the file is created:
     * - S_IRUSR: reading, user
-    * - S_IWUSR: writting, user
+    * - S_IWUSR: writing, user
     */
    int fd = open("test.txt", O_CREAT | O_TRUNC | O_WRONLY , S_IRUSR | S_IWUSR);
    if (fd < 0){
