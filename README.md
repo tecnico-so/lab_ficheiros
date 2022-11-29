@@ -56,3 +56,7 @@ Nesse caso, deve passar a variável `FILE * stdout` (definida em `stdio.h`) para
 ## Conclusão
 
 Neste guião demonstrou-se como escrever e ler de um ficheiro.
+
+----
+
+Contactos para sugestões/correções: [LEIC-Alameda](mailto:leic-so-alameda@disciplinas.tecnico.ulisboa.pt), [LEIC-Tagus](mailto:leic-so-tagus@disciplinas.tecnico.ulisboa.pt), [LETI](mailto:leti-so-tagus@disciplinas.tecnico.ulisboa.pt)
