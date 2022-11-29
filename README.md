@@ -56,16 +56,16 @@ Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o
 A interface de E/S do Unix é baseada na existência de uma tabela de ficheiros abertos por cada processo, também chamada _file descriptor table_.
 Esta tabela permite tratar vários canais de comunicação da mesma forma (ex. terminais, ficheiros, _sockets_, _pipes_) utilizando os _file descriptors_ devolvidos pela função `open`.
 
-Como já sabe, por convenção, os três primeiros _file descriptors_ são reservados: `0` - `stdin` (_standard input_, vulgo teclado), `1` - `stdout` (_standard out_, vulgo ecrã), `2` - `stderr` (_standard error_, por omissão também o ecrã).
+Como já sabe, por convenção, os três primeiros _file descriptors_ são reservados: `0` para o  `stdin` (_standard input_, vulgo teclado), `1` para o `stdout` (_standard out_, vulgo ecrã) e `2` para o `stderr` (_standard error_, por omissão também o ecrã).
 
 1. Modifique o programa original [open-write.c](./open-write/open-write.c) substituindo o primeiro argumento (`fd`) da instrução write por `1` e verifique o que muda no comportamento do programa.
 
-2. Também pode fazer esta alteração sobre o programa que compôs baseado no `stdio`.
-Nesse caso, deve passar a variável `FILE * stdout` (definida em `stdio.h`) para o argumento respetivo da função de escrita que usou (`fwrite`, `fprintf`, ou `outra`).
+2. Também pode fazer esta alteração sobre o programa que compôs baseado no _stdio_.
+Nesse caso, deve passar a variável `FILE * stdout` (definida em `stdio.h`) para o argumento respetivo da função de escrita que usou (`fwrite`, `fprintf` ou outra).
 
-3. Modifique o programa original [open-read.c](./open-read/open-read.c) substituindo o primeiro argumento (`fd`) da instrução read por `0` e verifique que a mensagem é lida do teclado.
+3. Modifique o programa original [open-read.c](./open-read/open-read.c) substituindo o primeiro argumento (`fd`) da instrução `read` por `0` e verifique que a mensagem é lida do teclado.
 
-4. Idem sobre o programa [open-read.c](./open-read/open-read.c) baseado no `stdio`, usando a variável `FILE * stdin` como argumento da função de leitura ([`fread`](https://man7.org/linux/man-pages/man3/fread.3.html), [`fscanf`](https://man7.org/linux/man-pages/man3/fscanf.3.html), ou outra).
+4. Idem sobre o programa [open-read.c](./open-read/open-read.c) baseado no _stdio_, usando a variável `FILE * stdin` como argumento da função de leitura ([`fread`](https://man7.org/linux/man-pages/man3/fread.3.html), [`fscanf`](https://man7.org/linux/man-pages/man3/fscanf.3.html) ou outra).
 
 ## Conclusão
 
