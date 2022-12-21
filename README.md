@@ -1,8 +1,8 @@
-# Guião 3: Programação com ficheiros
+# Guião sobre programação com ficheiros
 
 ![IST](img/IST_DEI.png)  
 
-## Objectivos
+## Objetivos
 
 No final deste guião, deverá ser capaz de:
 
