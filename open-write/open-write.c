@@ -35,10 +35,17 @@ int main(int argc, char *argv[])
    char buffer[] = "Hello World!\n";
 
    /* write a string to the file */
-   int bytes_written = write(fd, buffer, strlen(buffer));
-   if (bytes_written < 0){
-      fprintf(stderr, "write error: %s\n", strerror(errno));
-      return -1;
+   int len = strlen(buffer);
+   while (len > 0) {
+      int bytes_written = write(fd, buffer, len);
+
+      if (bytes_written < 0){
+         fprintf(stderr, "write error: %s\n", strerror(errno));
+         return -1;
+      }
+
+      /* might not have managed to write all, len becomes what remains */
+      len -= bytes_written;
    }
 
    /* close the file */
