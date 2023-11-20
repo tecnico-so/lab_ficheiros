@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include <string.h>
 
-
 int main(int argc, char *argv[])
 {
    /*
@@ -36,8 +35,9 @@ int main(int argc, char *argv[])
 
    /* write a string to the file */
    int len = strlen(buffer);
+   int done = 0;
    while (len > 0) {
-      int bytes_written = write(fd, buffer, len);
+      int bytes_written = write(fd, buffer + done, len);
 
       if (bytes_written < 0){
          fprintf(stderr, "write error: %s\n", strerror(errno));
@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 
       /* might not have managed to write all, len becomes what remains */
       len -= bytes_written;
+      done += bytes_written;
    }
 
    /* close the file */
