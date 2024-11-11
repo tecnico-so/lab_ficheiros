@@ -1,17 +1,13 @@
-/*
+/**
  * open-write.c
  *
  * Simple example of opening and writing to a file.
  *
  */
 
-#include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <unistd.h>
 
 int main(int argc, char* argv[]) {
@@ -37,8 +33,9 @@ int main(int argc, char* argv[]) {
     char buffer[] = "Hello World!\n";
 
     /* write a string to the file */
-    int len = strlen(buffer);
+    int len = sizeof(buffer);
     int done = 0;
+
     while (len > done) {
         int bytes_written = write(fd, buffer + done, len - done);
 
