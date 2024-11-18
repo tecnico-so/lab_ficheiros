@@ -33,7 +33,10 @@ int main(int argc, char* argv[]) {
     char buffer[] = "Hello World!\n";
 
     /* write a string to the file */
-    int len = sizeof(buffer);
+
+    /* because we don't want to write the ending null-character to the file
+     * ~~~~~~~~~~~~~~~~~~~~~~vvv */
+    int len = sizeof(buffer) - 1;
     int done = 0;
 
     while (len > done) {
