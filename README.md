@@ -11,7 +11,7 @@ No final deste guião, deverá ser capaz de:
 
 ## Requisitos
 
-- Sistema operativo POSIX-compliant, de preferência Linux Ubuntu 20.04 LTS (se não o tiverem disponível no vosso computador pessoal, podem utilizar os computadores do laboratório).
+- Sistema operativo compatível com POSIX, de preferência um Linux Ubuntu LTS (*Long Term Support*). Se não o tiver disponível no seu computador pessoal, pode utilizar um dos computadores do laboratório.
 
 ## Acesso a ficheiros
 
@@ -45,31 +45,31 @@ fread **allows formatted IO** (with the "%.." parameter)
 6. Caso o programa [open-read.c](./open-read/open-read.c) seja executado sobre um ficheiro cujo conteúdo exceda `128` *bytes*, só um excerto do ficheiro é lido.
 Corrija essa limitação, de forma a ler integralmente o ficheiro mesmo quando o seu conteúdo é superior à dimensão do *buffer* da aplicação.
 
-7. Teste a sua solução usando um ficheiro grande.
+7. Teste a sua solução usando um ficheiro grande (com pelo menos 10 KB).
 
 8. Estenda a solução anterior de modo que o resultado da leitura seja colocado no ficheiro `test-out.txt`.
 
-9. Experimente a nova solução e verifique o resultado está correto usando o comando `diff` entre ambos os ficheiros.
+9. Experimente a nova solução e verifique que o resultado está correto usando o comando `diff` entre ambos os ficheiros.
 
 ## Interface de Entradas/Saídas (I/O)
 
 A interface de I/O do Unix é baseada na existência de uma tabela de ficheiros abertos por cada processo, também chamada _file descriptor table_.
 Esta tabela permite tratar vários canais de comunicação da mesma forma (ex. terminais, ficheiros, *sockets*, *pipes*) utilizando os *file descriptors* devolvidos pela função `open`.
 
-Como já sabe, por convenção, os três primeiros *file descriptors* são reservados: `0` para o  `stdin` (*standard input*, vulgo teclado), `1` para o `stdout` (*standard out*, vulgo ecrã) e `2` para o `stderr` (*standard error*, por omissão também o ecrã).
+Como já sabe, por convenção, os três primeiros *file descriptors* são: `0` para o  `stdin` (*standard input*, que normalmente corresponde ao teclado), `1` para o `stdout` (*standard out*, que normalmente corresponde ao ecrã) e `2` para o `stderr` (*standard error*, por omissão também corresponde ao ecrã).
 
 1. Modifique o programa original [open-write.c](./open-write/open-write.c) substituindo o primeiro argumento (`fd`) da instrução write por `1` e verifique o que muda no comportamento do programa.
 
-2. Também pode fazer esta alteração sobre o programa que compôs baseado no *stdio*.
+2. Também pode fazer esta alteração sobre o programa que foi implementado usando *stdio*.
 Nesse caso, deve passar a variável `FILE* stdout` (definida em `stdio.h`) para o argumento respetivo da função de escrita que usou (`fwrite`, `fprintf` ou outra).
 
 3. Modifique o programa original [open-read.c](./open-read/open-read.c) substituindo o primeiro argumento (`fd`) da instrução `read` por `0` e verifique que a mensagem é lida do teclado.
 
-4. Idem sobre o programa [open-read.c](./open-read/open-read.c) baseado no *stdio*, usando a variável `FILE* stdin` como argumento da função de leitura ([`fread`](https://man7.org/linux/man-pages/man3/fread.3.html), [`fscanf`](https://man7.org/linux/man-pages/man3/fscanf.3.html) ou outra).
+4. Fazer o mesmo para o programa [open-read.c](./open-read/open-read.c) baseado no *stdio*, usando a variável `FILE* stdin` como argumento da função de leitura ([`fread`](https://man7.org/linux/man-pages/man3/fread.3.html), [`fscanf`](https://man7.org/linux/man-pages/man3/fscanf.3.html) ou outra).
 
 ## Conclusão
 
-Neste guião demonstrou-se as funções `read` e `write` e a forma como devem ser usadas para ler ou escrever dados, de forma gradual.
+Neste guião foram demonstradas as funções `read` e `write` e apresentada a forma como devem ser usadas para ler ou escrever dados, de forma gradual.
 É importante garantir que todos os *bytes* são lidos e escritos de acordo com o esperado.
 
 Vimos também como escrever e ler de um ficheiro de texto usando as funções com o prefixo `f` (*file*), do *stdio*, que usam um *buffer* interno.
