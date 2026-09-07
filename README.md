@@ -7,7 +7,7 @@
 
 No final deste guião, deverá ser capaz de:
 
-- construir programas para escrever e ler ficheiros utilizando `open`, `close`, `read`, `write`;
+- construir programas para escrever e ler ficheiros utilizando `open`, `read`, `write` e `close`;
 
 - detetar e tratar erros e transferências parciais de dados;
 
@@ -74,9 +74,9 @@ Consulte a [documentação de `write`](https://man7.org/linux/man-pages/man2/wri
 man 2 write
 ```
 
-[^man2]: O argumento 2 no comando `man` corresponde à secção do manual sobre chamadas ao sistema (em vez de comandos de utilizador, que estão na secção 1, acedida por omissão).
+[^man2]: O argumento 2 no comando `man` corresponde à secção do manual sobre chamadas ao sistema (em vez de comandos de utilizador, que estão na secção 1, que que é acedida por omissão).
 
-**a)** Explique o significado dos três argumentos de `write` e do valor devolvido pela função.
+**a)** Consulte o significado dos três argumentos de `write` e do valor devolvido pela função.
 
 **b)** Verifique na documentação se uma chamada a `write` garante que todos os *bytes* solicitados são escritos.
 
@@ -121,6 +121,7 @@ Compile e execute o programa.
 ```console
 cd ../open-read
 make
+./open-read
 ```
 
 Consulte a [documentação de `read`](https://man7.org/linux/man-pages/man2/read.2.html):
@@ -134,6 +135,8 @@ Explique:
 **a)** o significado dos três argumentos de `read`;
 
 **b)** o significado dos valores devolvidos quando são superiores a zero, iguais a zero ou iguais a `-1`.
+
+**c)** como é que o `printf` sabe quando parar de imprimir?
 
 
 ## 4. Leitura de ficheiros maiores do que o *buffer*
@@ -175,10 +178,10 @@ Por exemplo, num terminal podem estar disponíveis apenas os caracteres já intr
 Pode também acontecer que uma chamada a `write` apenas consiga escrever parte dos dados.
 
 A semântica destas operações é, portanto, aproximadamente:  
-**transferir até ao número de *bytes* solicitado e indicar quantos foram efetivamente transferidos**.  
-Esta abordagem permite usar as mesmas primitivas para diferentes tipos de objetos e deixa ao programa o controlo sobre repetição, tratamento de erros e sincronização.
+**tentar transferir até ao número de *bytes* solicitado e indicar quantos foram efetivamente transferidos**.  
+Esta abordagem permite usar as mesmas primitivas para diferentes tipos de objetos e deixa ao programa o controlo sobre repetição e tratamento de erros.
 
-Em ficheiros regulares, `read` e `write` transferem frequentemente todos os *bytes* pedidos numa única chamada, mas é importante ter em conta que esse comportamento não é garantido pela interface.
+Em ficheiros regulares, `read` e `write` transferem frequentemente todos os *bytes* pedidos numa única chamada, mas é importante ter em conta que esse comportamento **não** é garantido pela interface.
 
 
 ## Mini-exercício
@@ -194,7 +197,7 @@ Ao longo deste exercício, o formato de cada registo será construído progressi
 Em todas as alíneas devem ser utilizadas as operações POSIX `open`, `read`, `write` e `close` para acesso aos ficheiros.
 
 Sempre que for necessário transferir vários *bytes*, não deve assumir que uma única chamada a `read` ou `write` transfere necessariamente todos os *bytes* pedidos.
-Sugere-se a criação de funções auxiliares para as leituras e escritas.
+Sugere-se a criação de funções auxiliares para as leituras e as escritas.
 
 
 ### 1. Registos contendo apenas texto
@@ -225,18 +228,11 @@ Os *bytes* não utilizados devem ter o valor zero, garantindo assim que o texto 
 
 **a)** Escrever textos
 
-Implemente o programa `write_texts.c`, que cria o ficheiro:
-
-```text
-texts.bin
-```
-
-e nele escreve, pelo menos, **quatro registos** contendo textos diferentes.
+Implemente o programa `write_texts.c`, que cria o ficheiro `texts.bin` e nele escreve, pelo menos, **três registos** contendo textos diferentes.
 
 Por exemplo:
 
 ```text
-sensor cardíaco operacional
 sensor movimento operacional
 treino iniciado
 treino terminado
@@ -255,14 +251,13 @@ A leitura deve terminar quando for encontrado o fim normal do ficheiro.
 Tenha em conta os seguintes pontos:
 
 - Como sabe o programa onde começa o registo seguinte?
-- Por que razão deve ler 64 bytes mesmo quando o texto contém apenas 15 caracteres?
+- Por que razão deve ler 64 bytes mesmo quando o texto contém menos caracteres?
 - O que significa uma chamada a `read` devolver `0`?
-- O que significa encontrar o fim do ficheiro depois de já terem sido lidos alguns *bytes* de um novo registo?
 
 ### 2. Acrescentar um campo inteiro
 
 Pretende-se agora associar um número inteiro a cada texto.
-Este valor representa uma **marca temporal** correspondente ao número de segundos decorridos desde o início do treino.
+Este valor representa uma **marca temporal** correspondente ao número de segundos decorridos desde o primeiro registo.
 
 O novo formato de cada registo passa a ser:
 
@@ -282,27 +277,20 @@ int
 char[64]
 ```
 
-**c)** Escrever valores e textos
+**a)** Escrever valores e textos
 
 Crie um novo programa, baseado no anterior, chamado `write_values.c`.
 
-O programa deverá criar:
-
-```text
-values.bin
-```
-
-e escrever pelo menos quatro registos.
-
-Utilize valores inteiros diferentes e crescentes.
+O programa deverá criar `values.bin` e escrever pelo menos três registos.
+Calcule a dimensão esperada do ficheiro e tome nota.
 
 Cada campo deverá ser escrito separadamente.
-
-Indique uma expressão, utilizando `sizeof`, que represente a dimensão de **um registo**.
+Utilize valores inteiros crescentes.
 
 Confirme novamente a dimensão do ficheiro.
+Está de acordo com o cálculo?
 
-**d)** Ler valores e textos
+**b)** Ler valores e textos
 
 Implemente também `read_values.c`, que lê todos os registos de `values.bin`.
 
@@ -314,7 +302,6 @@ Para cada registo, apresente:
 
 Atente aos seguintes pontos:
 
-- Qual é a dimensão de um ficheiro que contém `N` destes registos?
 - Depois de ler o texto, como sabe onde começa o `int` do registo seguinte?
 - Por que razão não seria correto procurar `'\0'` para determinar onde começa o próximo registo?
 
@@ -340,21 +327,23 @@ O resto do enunciado será entregue no início da aula e estenderá a solução 
 
 ### Avaliação em aula
 
-Quando tiver concluído o exercício, chame o docente do laboratório, para que possa ver a solução em execução e fazer perguntas sobre a implementação a cada membro do grupo.
+Quando tiver concluído o exercício, chame o docente do laboratório, para que possa demonstrar a solução em execução e responder a perguntas sobre a implementação.
 
 **A avaliação é presencial e individual.**
 
 Não basta que o código funcione, é necessário saber explicar como foi implementado e por que funciona.
 Podem também ser pedidas modificações de pormenor no momento.
 
-Entregar a solução antes do fim da aula:
+Em todo o caso, entregar a solução antes do fim da aula:
 
 **Fénix**, Avaliação, Projetos, **mini-Exercício 1**
 
 **Tenha em atenção o seguinte:**
 
-- só serão aceites trabalhos de estudantes que estiveram presentes no laboratório. Confirme que o docente registou a sua presença na aula;
-- assegure-se de que a solução é enviada em formato ZIP e que não contém ficheiros executáveis nem outros ficheiros gerados pela compilação. Antes de criar o ficheiro ZIP, limpe os ficheiros gerados manualmente ou com `make clean`;
+- só serão aceites trabalhos de estudantes que estiveram presentes no laboratório.
+Confirme que o docente registou a sua presença na aula;
+- assegure-se de que a solução é enviada em formato ZIP e que não contém ficheiros executáveis nem outros ficheiros gerados pela compilação.
+Antes de criar o ficheiro ZIP, limpe os ficheiros gerados manualmente ou com `make clean`;
 - deverá também incluir um ficheiro `README` com um breve resumo da funcionalidade implementada (parcial ou total).
 
 
