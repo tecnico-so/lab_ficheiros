@@ -74,7 +74,7 @@ Consulte a [documentação de `write`](https://man7.org/linux/man-pages/man2/wri
 man 2 write
 ```
 
-[^man2]: O argumento 2 no comando `man` corresponde à secção do manual sobre chamadas ao sistema (em vez de comandos de utilizador, que estão na secção 1, que que é acedida por omissão).
+[^man2]: O argumento 2 no comando `man` corresponde à secção do manual sobre chamadas ao sistema (em vez de comandos de utilizador, que estão na secção 1, que é acedida por omissão).
 
 **a)** Consulte o significado dos três argumentos de `write` e do valor devolvido pela função.
 
@@ -305,7 +305,7 @@ Atente aos seguintes pontos:
 - Depois de ler o texto, como sabe onde começa o `int` do registo seguinte?
 - Por que razão não seria correto procurar `'\0'` para determinar onde começa o próximo registo?
 
-**e)** Verificar a leitura e a escrita
+**c)** Verificar a leitura e a escrita
 
 Execute primeiro:
 
