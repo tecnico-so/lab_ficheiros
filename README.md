@@ -358,7 +358,7 @@ O programador deve, por isso, verificar sempre os valores devolvidos e tratar er
 
 Sobre estas primitivas podem depois ser construídas bibliotecas que tornam a programação mais simples e as operações mais eficientes[^stdio].
 
-[^stdio]: A biblioteca `stdio` faz *buffering* de leituras e escritas e é abordada no [guião extra](READMETOO.md).
+[^stdio]: A biblioteca `stdio` faz *buffering* de leituras e escritas e é abordada no [guião extra](./READMETOO.md).
 
 ----
 
